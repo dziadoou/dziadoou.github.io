@@ -14,13 +14,13 @@ jobs:
       run: |
         npm install
         npm run-script build
-
+      env:
+        REACT_APP_GITHUB_TOKEN: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.3.0
-      env:
-        REACT_APP_GITHUB_TOKEN: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
+
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN}}
         BRANCH: gh-pages
-        FOLDER: build
+        FOLDER: dist
